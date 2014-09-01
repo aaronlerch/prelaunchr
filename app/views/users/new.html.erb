@@ -1,6 +1,6 @@
 <div class="hero">
-    <p class="large brandon">Harry&#8217;s is live</p>
-    <p class="small brandon">Respecting the Face and Wallet<br>Since Like...Right Now.</p>
+    <h1 class="adelle ew-logo">Erickson Woodworking</h1>
+    <p class="adelle">New site launches on September 12, 2014.</p>
 </div>
 
 <div class="form-wrap clearfix <%= "ended" if Rails.application.config.ended %>">
@@ -13,8 +13,10 @@
         <div class="key"></div>
         <p class="byline brandon">Be the first to know</p>
         <%= form_for @user, :url => { :action => "create" } do |f| %>
+            <%= f.text_field :first_name, :placeholder => "First name", :class => "email brandon" %>
+            <%= f.text_field :last_name, :placeholder => "Last name", :class => "email brandon" %>
             <%= f.text_field :email, :placeholder => "Enter Email", :class => "email brandon" %>
-            <input class="submit brandon" name="commit" type="submit" value="Step Inside" />
+            <%= f.submit "Step Inside" , :class=> "submit brandon" %>
         <% end %>
     <% end %>
 </div>
