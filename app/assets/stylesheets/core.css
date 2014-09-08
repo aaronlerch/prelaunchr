@@ -10,6 +10,7 @@
  *
  *= require reset
  *= require_self
+ *= require mobile
  */
 
 
@@ -27,15 +28,15 @@ form{
     clear: both;
 }
 
-
 /* Home */
 
 html.home{
-	background: #EDECEA;
 }
 
-#home{
-	padding-bottom: 50px;
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	min-height:1045px;
+	position:relative;
 }
 
 #home .page-content{
@@ -43,26 +44,26 @@ html.home{
 	margin: 0 auto;
 }
 
-#home .hero{
+.hero{
 	width: 100%;
-	height: 446px;
-	background: url(/assets/home/hero.jpg) center center no-repeat;
-	background-size: 1600px 446px;
+	text-align: center;
 	overflow: hidden;
 	position: relative;
 	letter-spacing: .09em;
 	margin: 0 auto;
+	min-height:500px;
 }
 
-#home .hero .large{
-	font-weight: bold;
-	font-size: 40px;
-	color: #074E6F;
-	text-transform: uppercase;
-	margin: 85px 0 0 136px;
-	position: relative;
-	z-index: 2;
-	letter-spacing: 2px;
+#home .hero {
+	background: url(/assets/home/chair.jpg) no-repeat center bottom;
+	background-size:cover;
+}
+
+#home .hero h2 {
+	position:absolute;
+	text-align:left;
+	font-size:1.8em;
+	color:white;
 }
 
 #home .hero .small{
@@ -79,10 +80,63 @@ html.home{
 	letter-spacing: 1px;
 }
 
-#home .form-wrap{
+main {
+	display:block;
+	width:100%;
+	background-color:white;
+	font-size:18px;
+	position:relative;
+	z-index:1;
+}
+
+.ew-logo {
+	float:left;
+	background-image:url(/assets/home/erickson-woodworking-logo.png);
+	background-size: 250px 125px;
+	background-position:center center;
+	width:250px;
+	height:125px;
+	margin:3em 2%;
+	padding:40px;
+	text-indent: -9999px;
+	background-repeat:no-repeat;
+}
+
+#home .description {
+	width:400px;
+	margin:0 auto;
+	padding:1em 0;
+	text-align:center;
+	line-height:1.6em;
+}
+
+#home .desc-head {
+	font-size:1.2em;
+	font-weight:bold;
+	padding:1.8em 0 0;
+}
+
+.form-wrap, .referral-count {
+	float:right;
+}
+
+#home .form-wrap, #refer .referral-count {
 	height: 80px;
-	width: 411px;
-	margin: 23px auto 0;
+	width: 30%;
+	margin: 2em 2%;
+}
+
+#home .form-wrap {
+	padding-top:29px;
+}
+
+.referral-count {
+	text-align:center;
+}
+
+.referral-count hr {
+	width:290px;
+	margin:.5em auto;
 }
 
 #home .form-wrap .key{
@@ -94,35 +148,39 @@ html.home{
 }
 
 #home .form-wrap .byline{
-	font-size: 15px;
-	text-transform: uppercase;
-	color: #074E6F;
 	text-align: center;
-	font-weight: bold;
 	letter-spacing: 2px;
 	margin: 15px 0;
 }
 
-#home .form-wrap .email{
-	float: left;
+#home .form-wrap form {
+	width:274px;
+	margin:0 auto;
+	text-align:center;
+}
+#home .form-wrap .first, #home .form-wrap .last, #home .form-wrap .email{
 	font-size: 13px;
 	padding: 8px 0 8px 10px;
-	border: 1px solid #074E6F;
+	border: 1px solid black;
 	width: 256px;
 	outline: none;
 	letter-spacing: 1px;
 }
 
+#home .form-wrap .last, #home .form-wrap .first {
+	border-bottom:0 none;
+}
+
 #home .form-wrap .submit{
-	width: 143px;
-	background: #074E6F;
-	float: left;
+	cursor:pointer;
+	width:143px;
+	margin:3px auto;
+	background: white;
 	height: 37px;
 	line-height: 37px;
-	color: #FFF;
 	font-size: 13px;
-	text-transform: uppercase;
-	border: 0;
+	text-transform: lowercase;
+	border: 1px solid black;
 	letter-spacing: 2px;
 }
 
@@ -250,8 +308,21 @@ html.home{
 	font-family: "Brandon Grotesque", "brandon-grotesque", "HelveticaNeue", "Helvetica", "Arial", sans-serif;
 }
 
+.adelle {
+	color:black;
+	font-size:21px;
+}
+
 #refer{
 	background: #FFF;
+}
+
+#refer .hero h2 {
+	position:absolute;
+	bottom:417px;
+	font-size:1.5em;
+	color:white;
+	width:100%;
 }
 
 #refer .page-content{
@@ -301,19 +372,9 @@ html.home{
 }
 
 #refer .hero{
-	background: #F1F0EE;
-	height: 391px;
+	background: url(/assets/refer/robert-and-tor-erickson.jpg) center -200px no-repeat;
+	background-size:cover;
 	overflow: hidden;
-}
-
-#refer .mammoth{
-	width: 612px;
-	height: 394px;
-	background: url(/assets/refer/mammoth.png) 0 0 no-repeat;
-	background-size: 610px 394px;
-	overflow: hidden;
-	margin-top: 15px;
-	float: left;
 }
 
 #refer .mammoth .need{
@@ -362,46 +423,75 @@ html.home{
 	margin-top: 15px;
 }
 
-#refer .share-wrap .copy-link{
-	border: 1px solid #D1D0C7;
-	background: #FFF;
-	padding: 10px 0;
-	width: 320px;
-	text-transform: none;
-	font-size: 11px;
-	margin: 20px auto 0;
+#refer .description {
+	width:450px;
+	font-size:.9em;
+	margin:0 auto;
+	padding:2em 0;
+	text-align:center;
+	line-height:1.6em;
+	position:relative;
 }
 
-#refer .share-wrap .social-links{
-	width: 120px;
+#refer .copy-link{
+	border: 1px solid black;
+	background: #FFF;
+	padding: 10px 5px;
+	text-transform: none;
+	font-size: 11px;
+	margin: 5px auto 0;
+	text-align:center;
+	min-width:50%;
+	max-width:100%;
+	overflow:hidden;
+}
+
+#refer .social-links{
+	width: 300px;
 	height: 37px;
-	margin: 25px auto 0;
+	margin: 5px auto 0;
 	text-align: center;
 }
 
-#refer .share-wrap .social-links a, #refer .share-wrap .social-links div{
+#refer .social-links a, #refer .social-links div, #refer .social-links .pinterest {
 	display: inline-block;
 }
 
-#refer .share-wrap .social-links .fb{
-	background: url(/assets/refer/fb.png);
-	background-size: 27px 27px;
-	width: 27px;
+#refer .social-links .fb{
+	background: url(/assets/refer/fb-share.png) no-repeat center top;
+	width: 66px;
 	height: 27px;
 }
 
-#refer .share-wrap .social-links .twit{
-	background: url(/assets/refer/twit.png);
-	background-size: 27px 27px;
-	width: 27px;
-	height: 27px;
+#refer .social-links .twit{
 }
 
-#refer .share-wrap .social-links .sep{
+#refer .social-links .pinterest {
+}
+
+#refer .social-links .pinterest a {
+}
+
+#refer .social-links .sep{
 	height: 28px;
 	width: 1px;
 	background: #BAB9BA;
 	margin: 0 20px;
+	display:inline-block;
+}
+
+#refer .chair-photos {
+	width:96%;
+	margin:0px auto;
+	clear: both;
+}
+
+#refer .chair-photos img {
+	width:19%;
+}
+
+#refer .count {
+	font-size:3em;
 }
 
 #refer .prizes{
@@ -686,6 +776,35 @@ only screen and (min-device-pixel-ratio: 2) {
 	}
 }
 
+/* Sticky footer method by ryanfait.com */
+
+ * {
+    margin: 0;
+ }
+ 
+ html, body {
+    height: 100%;
+ }
+ 
+ .hero {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -350px;
+ }
+ 
+ main, .push {
+    height: 350px;
+ }
+
+ #refer .hero {
+ 	margin-bottom:-400px;
+ }
+
+ #refer main, #refer .push {
+ 	height:400px;
+ }
+ 
 
 
 

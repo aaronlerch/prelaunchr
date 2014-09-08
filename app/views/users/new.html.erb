@@ -1,20 +1,29 @@
 <div class="hero">
-    <p class="large brandon">Harry&#8217;s is live</p>
-    <p class="small brandon">Respecting the Face and Wallet<br>Since Like...Right Now.</p>
+    <img class="bg-alt-cover" src="assets/home/chair.jpg" alt="Background image - Sandhill chair" />
+    <!-- Sticky footer method by ryanfait.com -->
+    <div class="push"></div>
 </div>
 
-<div class="form-wrap clearfix <%= "ended" if Rails.application.config.ended %>">
-    <% if Rails.application.config.ended %>
-        <p class="thanks brandon">THANK YOU FOR PARTICIPATING<br>IN OUR PRE-LAUNCH.</p>
-        <p class="compiling brandon">WE ARE COMPILING REWARDS RIGHT NOW AND WILL EMAIL<br/>COUPON CODES TO ALL RECIPIENTS IN THE NEXT DAY OR TWO</p>
-        <p class="go-to brandon">In the meantime, head to  <a href="http://www.harrys.com/">WWW.HARRYS.COM</a></p>
-        <p class="again brandon">Thank You Again!</p>
-    <% else %>
-        <div class="key"></div>
-        <p class="byline brandon">Be the first to know</p>
-        <%= form_for @user, :url => { :action => "create" } do |f| %>
-            <%= f.text_field :email, :placeholder => "Enter Email", :class => "email brandon" %>
-            <input class="submit brandon" name="commit" type="submit" value="Step Inside" />
+<main role="main">
+    <h1 class="adelle ew-logo">Erickson Woodworking</h1>
+    <div class="form-wrap clearfix <%= "ended" if Rails.application.config.ended %>">
+        <% if Rails.application.config.ended %>
+            <p class="compiling">THANK YOU FOR PARTICIPATING<br>IN OUR PRE-LAUNCH.</p>
+            <p class="compiling">WE ARE COMPILING RESULTS RIGHT NOW AND WILL<br/>ANNOUNCE A WINNER IN THE NEXT DAY OR TWO</p>
+            <p class="compiling">In the meantime, head to  <a href="http://www.harrys.com/">www.ericksonwoodworking.com</a></p>
+            <p class="again">Thank You Again!</p>
+        <% else %>
+            <p class="byline">Sign up to celebrate with us.</p>
+            <%= form_for @user, :url => { :action => "create" } do |f| %>
+                <%= f.text_field :first_name, :placeholder => "first name", :class => "first" %>
+                <%= f.text_field :last_name, :placeholder => "last name", :class => "last" %>
+                <%= f.text_field :email, :placeholder => "your email", :class => "email brandon" %>
+                <%= f.submit "Step Inside" , :class=> "submit brandon" %>
+            <% end %>
         <% end %>
-    <% end %>
-</div>
+    </div>
+    <section class="description-wrap">
+        <p class="description desc-head">Erickson Woodworking just went multi-generational.</p>
+        <p class="description">On September 15, to celebrate our new father-son partnership, Erickson Woodworking will be giving away a hand-made, bespoke chair.</p>
+    </section>
+</main>

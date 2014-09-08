@@ -1,88 +1,54 @@
-<div class="header">
-    <div class="content">
-        <p class="logo brandon">Harry&#8217;s</p>
-        <p class="byline brandon">THANK YOU FOR SIGNING UP</p>
-    </div>
-</div>
-
 <div class="hero">
-    <div class="page-content clearfix">
-        <div class="mammoth">
-            <span class="need brandon">Shaving Is<br>Evolving</span>
-        </div>
-        <div class="share-wrap">
-            <p class="why brandon">Don't leave your friends behind</p>
-            <p class="title brandon">INVITE FRIENDS &<br>Earn Product</p>
-            <p class="subtitle brandon">Share your unique link via email, Facebook<br>or Twitter and earn Harry's goods for<br>each friend who signs up.</p>
-            <div class="copy-link brandon"><%= root_url %>?ref=<%= @user.referral_code %></div>
-            <% twitter_message = "#Shaving is evolving. Excited for @harrys to launch." %>
-            <div class="social-links">
-                <a href="http://www.facebook.com/sharer/sharer.php?u=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&title=Harrys" class="fb" target="_blank"></a>
-                <div class="sep"></div>
-                <a href="http://twitter.com/share?url=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&text=<%= CGI::escape(twitter_message) %>" class="twit" target="_blank"></a>
-            </div>
-        </div>
-    </div>
+    <img class="bg-alt-cover" src="assets/refer/robert-and-tor-erickson.jpg" alt="Robert and Tor Erickson" />
+    <h2>From Robert and Tor, thank you.</h2>
+    <!-- Sticky footer method by ryanfait.com -->
+    <div class="push"></div>
 </div>
 
-<% 
-    referrals_count = @user.referrals.count
+<main role="main">
+    <h1 class="adelle ew-logo">Erickson Woodworking</h1>
 
-    stops = User::REFERRAL_STEPS
+    <% 
+        referrals_count = @user.referrals.count + 1
 
-    found = nil
+        stops = User::REFERRAL_STEPS
 
-    stops.reverse_each { |stop|
-        if stop["count"] <= referrals_count and !found
-            stop["selected"] = true
-            found = stop
-        else
-            stop["selected"] = false
-        end
-    }   
- %>
-<div class="prizes <% if found %>prize-<%= found["class"] %><% end %>">
-    <div class="page-content">
-        <p class="callout brandon">Here's How It Works:</p>
-        <ul class="products clearfix">
-            <li class="title brandon"><p class="friends">Friends Joined</p><p class="rewards">Harry's Product</p></li>
-            <% stops.each do |stop| %>
-                <li class="product brandon <% if stop["selected"] %>selected<% end %> <% if stop["class"] == 'five' %>last<% end %>">
-                    <div class="circle"><%= stop["count"] %></div>
-                    <div class="sep"></div>
-                    <p><%= stop["html"].html_safe %></p>
+        found = nil
 
-                    <div class="tooltip">
-                        <img src="<%= stop["image"] %>" height="254">
-                    </div>
-                </li>
-            <% end %>
-        </ul>
-
-        <div class="progress">
-            <div class="mover">
-                <div class="bar clearfix"></div>
-            </div>
-        </div>
-
-        <% 
-            words = ''
-            if referrals_count == 1
-                words = 'friend has'
-            elsif 
-                words = 'friends have'
+        stops.reverse_each { |stop|
+            if stop["count"] <= referrals_count and !found
+                stop["selected"] = true
+                found = stop
+            else
+                stop["selected"] = false
             end
-
-        %>
-
-        <% if referrals_count == 0 %>
-            <p class="place brandon"><span>No</span> friends have joined...Yet!</p>
-        <% else %>
-            <p class="place brandon"><span><%= referrals_count %></span> <%= words %> joined</p>
-        <% end %>
-        <p class="check brandon">Keep checking</p>
-
-        <p class="ship brandon">We ship to the U.S. (& Canada Soon)</p>        
-        <a class="policy brandon" href="/privacy-policy" target="_blank">Privacy Policy</a>
+        }   
+     %>
+    <div class="referral-count">
+        <h3 class="count"><%= referrals_count %></h3>
+        <p>Your total entries (you plus your referrals)</p>
+        <hr />
+        <p>Average number of entries per visitor</p>
+        <h3 class="count"><%= get_referral_avg %></h3>
     </div>
-</div>
+    
+    <section class="description-wrap">
+        <p class="description">
+            <span style="display:block; margin-bottom:1em; font-size:1.4em; font-weight:bold;">Now increase your chances of winning the chair by sharing the word on Facebook.</span>
+            <span style="display:block; margin-bottom:1em;" class="desc-left">Share your unique link via Facebook or email and be entered in the drawing again for every referral you generate.</span>
+            <span class="social-links" style="display:block;">
+                <a href="http://www.facebook.com/sharer/sharer.php?u=http://ericksonwoodworking.com/?ref=<%= CGI::escape(@user.referral_code) %>" class="fb" target="_blank"></a>
+            </span>
+            <span style="display:block; font-size:.9em;">Or copy this link and share it by email:</span>
+            <input class="copy-link" value="<%= root_url %>?ref=<%= @user.referral_code %>" type="text" />
+        </p>
+    </section>
+
+    <div class="chair-photos">
+        <img src="/assets/refer/syuba.jpg" alt="South Yuba chair by Erickson Woodworking - front view @erickson_ww #chairsthatfit #customfurniture http://ericksonwoodworking.com/?ref=<%= @user.referral_code %>" />
+        <img src="/assets/refer/syubadetail1.jpg" alt="South Yuba chair by Erickson Woodworking - detail shot @erickson_ww #chairsthatfit #customfurniture http://ericksonwoodworking.com/?ref=<%= @user.referral_code %>" />
+        <img src="/assets/refer/syubaside.jpg" alt="South Yuba chair by Erickson Woodworking - side view @erickson_ww #chairsthatfit #customfurniture http://ericksonwoodworking.com/?ref=<%= @user.referral_code %>" />
+        <img src="/assets/refer/syubadetail2.jpg" alt="South Yuba chair by Erickson Woodworking - another detail shot @erickson_ww #chairsthatfit #customfurniture http://ericksonwoodworking.com/?ref=<%= @user.referral_code %>" />
+        <img src="/assets/refer/syubarocker.jpg" alt="South Yuba chair by Erickson Woodworking - rocker model @erickson_ww #chairsthatfit #customfurniture http://ericksonwoodworking.com/?ref=<%= @user.referral_code %>" />
+    </div>
+</main>
