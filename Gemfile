@@ -18,4 +18,7 @@ end
 
 gem 'delayed_job_active_record', '~> 4.0.1'
 
-gem 'unicorn', '~> 4.8.3'
+# For Windows Installation. Do 'bundle install --without production' to avoid kgio installation error
+group :production do
+  gem 'unicorn', '~> 4.8.3'
+end
